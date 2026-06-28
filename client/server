@@ -1,0 +1,27 @@
+
+# HouseHunt
+
+A full-stack MERN application for managing house rentals.
+
+## Tech Stack
+
+### Frontend
+- React.js
+- Bootstrap
+- Axios
+
+### Backend
+- Node.js
+- Express.js
+
+### Database
+- MongoDB
+- Mongoose
+
+### Authentication
+- JWT
+- bcryptjs
+
+## Version
+
+v0.1.0

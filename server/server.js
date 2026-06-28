@@ -1,26 +1,18 @@
 
 const express = require("express");
+require("dotenv").config();
 const app = express();
-
-app.get("/",(req,res)=>{
-    res.send("Welcome");
-});
-
-app.get("/about",(req,res)=>{
-    res.send("About HouseHunt");
-});
-
-app.get("/contact",(req,res)=>{
-    res.json({
-  "email": "support@househunt.com",
-  "phone": "9876543210"
-});
-});
-
 const userRoutes = require("./routes/userRoutes");
+const { connectMongoDB } = require("./config/connect");
+
+app.use(express.json());
 
 app.use("/users", userRoutes);
 
-app.listen(5000,(req,res)=>{
-    console.log("Server is running on http://localhost:5000");
+connectMongoDB();
+
+const Port=8000;
+
+app.listen(Port,(req,res)=>{
+    console.log(`Server is running on http://localhost:${Port}`);
 })
