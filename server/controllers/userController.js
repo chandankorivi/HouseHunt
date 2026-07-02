@@ -1,4 +1,5 @@
-const User = require("../models/User");
+
+const User = require("../models/UserSchema");
 
 const bcrypt = require("bcrypt");
 
@@ -45,7 +46,7 @@ const loginUser = async (req,res) => {
 const isMatch = await bcrypt.compare(password,user.password);
      if(!isMatch){
         return res.status(400).json({
-            message : "Invalid password"
+            message : "Invalid Email or password "
         });
      }
 

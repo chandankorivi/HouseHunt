@@ -3,11 +3,19 @@ const express = require("express");
 require("dotenv").config();
 const app = express();
 const userRoutes = require("./routes/userRoutes");
-const { connectMongoDB } = require("./config/connect");
+const  connectMongoDB  = require("./config/connect");
+
+const ownerRoutes = require("./routes/ownerRoutes");
+
+const adminRoutes = require("./routes/adminRoutes");
 
 app.use(express.json());
 
-app.use("/users", userRoutes);
+app.use("/api/user", userRoutes);
+
+app.use("/api/owner", ownerRoutes);
+
+app.use("/api/admin", adminRoutes);
 
 connectMongoDB();
 

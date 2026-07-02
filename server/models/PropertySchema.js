@@ -13,10 +13,22 @@ const ProprtySchema = new mongoose.Schema({
         required : true
     },
 
-    rent : {
-        type : Number,
-        required : true
+    listingType : {
+        type : String,
+        required : true,
+        enum:["rent","sale"]
     },
+
+    price: {
+    type: Number,
+    required: true
+},
+
+    status: {
+    type: String,
+    enum: ["available", "sold"],
+    default: "available"
+},
 
     description : {
         type : String ,
