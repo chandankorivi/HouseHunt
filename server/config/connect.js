@@ -1,16 +1,15 @@
-
 const mongoose = require("mongoose");
 
 const connectMongoDB = async () => {
- try{
-    await mongoose.connect("mongodb://localhost:27017/HouseHunt");
+    try {
+        await mongoose.connect(process.env.MONGO_URI);
 
-    console.log("Database Connected");
- }
- catch {
-    console.error(error.message);
-    process.exit(1);
- }
+        console.log("Database Connected");
+    }
+    catch (error) {
+        console.error(error.message);
+        process.exit(1);
+    }
 };
 
-module.exports =  connectMongoDB;
+module.exports = connectMongoDB;

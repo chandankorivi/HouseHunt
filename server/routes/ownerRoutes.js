@@ -4,8 +4,10 @@ const router = express.Router();
 const {
     addProperty,
     getMyProperties,
+    deleteProperty,
+    getAllProperties,
     updateProperty,
-    deleteProperty
+    getSingleProperty
 } = require("../controllers/ownerController");
 
 const {
@@ -21,10 +23,24 @@ router.post(
 );
 
 router.get(
+    "/all-properties",
+    getAllProperties
+);
+
+router.get(
     "/my-properties",
     authMiddleware,
     authorizeRoles("owner"),
     getMyProperties
+);
+
+
+
+router.delete(
+    "/delete-property/:id",
+    authMiddleware,
+    authorizeRoles("owner"),
+    deleteProperty
 );
 
 router.put(
@@ -34,11 +50,11 @@ router.put(
     updateProperty
 );
 
-router.delete(
-    "/delete-property/:id",
+router.get(
+    "/property/:id",
     authMiddleware,
     authorizeRoles("owner"),
-    deleteProperty
+    getSingleProperty
 );
 
 module.exports = router;

@@ -1,7 +1,13 @@
-
+const dns = require("dns");
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
 const express = require("express");
 require("dotenv").config();
+const cors = require("cors");
 const app = express();
+
+app.use(cors());
+app.use(express.json());
+
 const userRoutes = require("./routes/userRoutes");
 const  connectMongoDB  = require("./config/connect");
 
@@ -9,13 +15,16 @@ const ownerRoutes = require("./routes/ownerRoutes");
 
 const adminRoutes = require("./routes/adminRoutes");
 
-app.use(express.json());
+const bookingRoutes = require("./routes/bookingRoutes");
+
 
 app.use("/api/user", userRoutes);
 
 app.use("/api/owner", ownerRoutes);
 
 app.use("/api/admin", adminRoutes);
+
+app.use("/api/booking", bookingRoutes);
 
 connectMongoDB();
 

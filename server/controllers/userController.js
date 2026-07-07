@@ -59,8 +59,9 @@ const isMatch = await bcrypt.compare(password,user.password);
 );
 
 res.json({
-    message:"Login successful",
-    token
+    message: "Login successful",
+    token,
+    role: user.role
 });
 
 };
