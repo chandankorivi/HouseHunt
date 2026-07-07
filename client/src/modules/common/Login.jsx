@@ -1,80 +1,111 @@
 import { useState } from "react";
 import API from "../../services/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "./Login.css";
 
 export default function Login() {
 
     const navigate = useNavigate();
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email,setEmail]=useState("");
+    const [password,setPassword]=useState("");
 
-    const handleLogin = async (e) => {
+    const handleLogin=async(e)=>{
 
         e.preventDefault();
 
-        try {
+        try{
 
-            const res = await API.post("/user/login", {
+            const res=await API.post("/user/login",{
                 email,
                 password
             });
 
-            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("token",res.data.token);
+            localStorage.setItem("role",res.data.role);
 
-            if (res.data.role === "admin") {
+            if(res.data.role==="admin"){
 
                 navigate("/admin");
 
-            } else if (res.data.role === "owner") {
+            }
+            else if(res.data.role==="owner"){
 
                 navigate("/owner");
 
-            } else {
+            }
+            else{
 
                 navigate("/renter");
 
             }
 
-        } catch (err) {
+        }
+        catch(err){
 
-            alert(err.response?.data?.message || "Login Failed");
+            alert(
+                err.response?.data?.message ||
+                "Login Failed"
+            );
 
         }
 
     };
 
-    return (
+    return(
 
-        <div style={{ padding: "30px" }}>
+        <div className="login-page">
 
-            <h1>Login</h1>
+            <div className="login-card">
 
-            <form onSubmit={handleLogin}>
+                <h1 className="login-title">
+                    HouseHunt
+                </h1>
 
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
+                <p className="login-subtitle">
+                    Welcome Back 👋
+                </p>
 
-                <br /><br />
+                <form onSubmit={handleLogin}>
 
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                    <input
+                        className="login-input"
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e)=>setEmail(e.target.value)}
+                    />
 
-                <br /><br />
+                    <input
+                        className="login-input"
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e)=>setPassword(e.target.value)}
+                    />
 
-                <button type="submit">
-                    Login
-                </button>
+                    <button
+                        className="login-btn"
+                        type="submit"
+                    >
+                        Login
+                    </button>
 
-            </form>
+                </form>
+
+                <div className="register-link">
+
+                    Don't have an account?
+
+                    <Link to="/register">
+
+                        Register
+
+                    </Link>
+
+                </div>
+
+            </div>
 
         </div>
 
