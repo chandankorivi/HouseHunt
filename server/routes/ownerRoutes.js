@@ -7,8 +7,10 @@ const {
     deleteProperty,
     getAllProperties,
     updateProperty,
-    getSingleProperty
+    getSingleProperty,
+    getFeaturedProperties
 } = require("../controllers/ownerController");
+
 
 const {
     authMiddleware,
@@ -26,6 +28,10 @@ router.get(
     "/all-properties",
     getAllProperties
 );
+
+// Public route – no auth required
+router.get("/featured", getFeaturedProperties);
+
 
 router.get(
     "/my-properties",

@@ -5,19 +5,23 @@ const addProperty = async (req, res) => {
     const {
         title,
         location,
+        propertyType,
         listingType,
         price,
         description,
-        images
+        images,
+        ownerContact
     } = req.body;
 
     const property = await Property.create({
         title,
         location,
+        propertyType,
         listingType,
         price,
         description,
         images,
+        ownerContact: ownerContact || "",
         owner: req.user._id
     });
 
@@ -42,9 +46,14 @@ const getMyProperties = async (req, res) => {
 
 const getAllProperties = async (req, res) => {
 
-    const properties = await Property.find({
-        status: "available"
-    });
+    const { location } = req.query;
+    let query = { status: "available" };
+
+    if (location) {
+        query.location = { $regex: location, $options: "i" };
+    }
+
+    const properties = await Property.find(query);
 
     res.status(200).json({
         properties
@@ -89,20 +98,24 @@ const updateProperty = async (req, res) => {
     const {
         title,
         location,
+        propertyType,
         listingType,
         price,
         status,
         description,
-        images
+        images,
+        ownerContact
     } = req.body;
 
     property.title = title;
     property.location = location;
+    property.propertyType = propertyType;
     property.listingType = listingType;
     property.price = price;
     property.status = status;
     property.description = description;
     property.images = images;
+    property.ownerContact = ownerContact || "";
 
     await property.save();
 
@@ -139,11 +152,22 @@ const deleteProperty = async (req, res) => {
 
 };
 
+// Public: returns up to 6 available properties for the landing page
+const getFeaturedProperties = async (req, res) => {
+    try {
+        const properties = await Property.find({ status: "available" }).limit(6);
+        res.status(200).json({ properties });
+    } catch (err) {
+        res.status(500).json({ message: "Failed to fetch featured properties" });
+    }
+};
+
 module.exports = {
     addProperty,
     getMyProperties,
     getAllProperties,
     getSingleProperty,
     updateProperty,
-    deleteProperty
+    deleteProperty,
+    getFeaturedProperties
 };

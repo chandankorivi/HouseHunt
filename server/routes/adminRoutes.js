@@ -7,7 +7,8 @@ const {
     getAllProperties,
     getAllBookings,
     deleteUser,
-    deleteProperty
+    deleteProperty,
+    grantOwner
 } = require("../controllers/adminController");
 
 const {
@@ -48,6 +49,13 @@ router.delete(
     authMiddleware,
     authorizeRoles("admin"),
     deleteProperty
+);
+
+router.put(
+    "/grant-owner/:id",
+    authMiddleware,
+    authorizeRoles("admin"),
+    grantOwner
 );
 
 module.exports = router;

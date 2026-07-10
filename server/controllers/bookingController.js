@@ -58,8 +58,12 @@ const updateBookingStatus = async (req, res) => {
     }
 
     booking.status = status;
-
     await booking.save();
+
+    if (status === "approved") {
+        booking.property.status = "sold";
+        await booking.property.save();
+    }
 
     res.status(200).json({
         message: "Booking status updated successfully",
@@ -68,8 +72,24 @@ const updateBookingStatus = async (req, res) => {
 
 };
 
+const getOwnerBookings = async (req, res) => {
+    // Find properties owned by this user
+    const properties = await Property.find({ owner: req.user._id }).select('_id');
+    const propertyIds = properties.map(p => p._id);
+    
+    // Find bookings for these properties
+    const bookings = await Booking.find({
+        property: { $in: propertyIds }
+    }).populate("property").populate("user", "name email mobile");
+
+    res.status(200).json({
+        bookings
+    });
+};
+
 module.exports = {
     bookProperty,
     getMyBookings,
-    updateBookingStatus
+    updateBookingStatus,
+    getOwnerBookings
 };
