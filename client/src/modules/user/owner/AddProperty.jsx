@@ -50,7 +50,7 @@ export default function AddProperty() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!formData.title || !formData.location || !formData.price || !imageData) {
+        if (!formData.title || !formData.location || !formData.price || !imageData || !formData.description) {
             showToast("Please fill all required fields and upload a photo.", "error");
             return;
         }
@@ -168,13 +168,14 @@ export default function AddProperty() {
 
                     {/* Description */}
                     <div className="fg">
-                        <label>Description</label>
+                        <label>Description *</label>
                         <textarea
                             name="description"
                             placeholder="Describe your property — amenities, floor, furnishing…"
                             rows={4}
                             value={formData.description}
                             onChange={handleChange}
+                            required
                         />
                     </div>
 
