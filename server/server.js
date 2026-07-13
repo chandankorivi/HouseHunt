@@ -29,8 +29,8 @@ app.use("/api/booking", bookingRoutes);
 
 connectMongoDB();
 
-const Port=8000;
+const PORT = process.env.PORT || 8000;
 
-app.listen(Port,(req,res)=>{
-    console.log(`Server is running on http://localhost:${Port}`);
-})
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
