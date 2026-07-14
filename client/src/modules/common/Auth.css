@@ -1,0 +1,379 @@
+/* ── Auth Page Layout ── */
+.auth-page {
+    min-height: 100vh;
+    padding-top: 68px;
+    background: linear-gradient(135deg, #0a0a1e 0%, #0f0f2e 50%, #1a0a3a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background orbs */
+.auth-bg-orbs { position: absolute; inset: 0; pointer-events: none; }
+.auth-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+}
+.auth-orb-1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, #6366f1, transparent);
+    top: -150px; right: -100px;
+}
+.auth-orb-2 {
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, #8b5cf6, transparent);
+    bottom: -100px; left: -50px;
+}
+
+/* ── Auth Card ── */
+.auth-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 2.5rem 2.25rem;
+    width: 100%;
+    max-width: 440px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+    margin: 1rem;
+}
+
+.auth-card-wide {
+    max-width: 520px;
+}
+
+/* ── Card Header ── */
+.auth-card-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-logo {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    display: block;
+    filter: drop-shadow(0 4px 12px rgba(99, 102, 241, 0.5));
+}
+
+.auth-card-header h1 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.5px;
+}
+
+.auth-card-header p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.95rem;
+}
+
+/* ── Error Banner ── */
+.auth-error-banner {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    color: #fca5a5;
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* ── Form ── */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.2px;
+}
+
+.form-group input,
+.form-group select {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    color: #fff;
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+}
+
+.form-group input::placeholder { color: rgba(255,255,255,0.3); }
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #6366f1;
+    background: rgba(99, 102, 241, 0.08);
+}
+
+.form-group.has-error input,
+.form-group.has-error select {
+    border-color: rgba(239, 68, 68, 0.6);
+}
+
+.form-group select option { background: #1e1e3a; color: #fff; }
+
+.field-error {
+    font-size: 0.8rem;
+    color: #fca5a5;
+    margin-top: 0.2rem;
+}
+
+/* ── Password Toggle ── */
+.input-with-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-toggle input {
+    flex: 1;
+    padding-right: 3rem;
+}
+
+.toggle-pass {
+    position: absolute;
+    right: 0.75rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0;
+    line-height: 1;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+.toggle-pass:hover { opacity: 1; }
+
+/* ── Submit Button ── */
+.auth-submit-btn {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 0.9rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.auth-submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(99, 102, 241, 0.6);
+}
+
+.auth-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Loading spinner */
+.btn-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2.5px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Forgot Link ── */
+.forgot-link-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -0.25rem;
+}
+
+.forgot-link {
+    font-size: 0.85rem;
+    color: #a5b4fc;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.forgot-link:hover { color: #818cf8; text-decoration: underline; }
+
+/* ── Card Footer ── */
+.auth-card-footer {
+    text-align: center;
+    margin-top: 1.75rem;
+    color: rgba(255,255,255,0.45);
+    font-size: 0.9rem;
+}
+
+.auth-link {
+    color: #a5b4fc;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.auth-link:hover { color: #818cf8; }
+
+/* ── Role Selector ── */
+.role-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.role-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 1rem 0.75rem;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.04);
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.role-option input[type="radio"] { display: none; }
+
+.role-option.selected {
+    border-color: #6366f1;
+    background: rgba(99, 102, 241, 0.15);
+    box-shadow: 0 0 0 2px rgba(99,102,241,0.3);
+}
+
+.role-icon { font-size: 1.6rem; }
+.role-label { color: #fff; font-weight: 700; font-size: 0.92rem; }
+.role-desc { color: rgba(255,255,255,0.45); font-size: 0.75rem; line-height: 1.3; }
+
+/* ── Step Indicator (ForgotPassword) ── */
+.step-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 1.75rem;
+    position: relative;
+}
+
+.step-dot {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.step-dot.active {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-color: #6366f1;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(99,102,241,0.5);
+}
+
+.step-dot.current {
+    transform: scale(1.15);
+}
+
+.step-line {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    width: 60%;
+    background: rgba(255,255,255,0.1);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+/* ── OTP Input ── */
+.otp-input {
+    text-align: center;
+    letter-spacing: 0.75rem;
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    padding: 0.9rem !important;
+}
+
+/* ── Demo OTP hint ── */
+.demo-otp-hint {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    color: #fcd34d;
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    font-size: 0.88rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.demo-otp-hint small { color: rgba(245, 158, 11, 0.6); }
+
+/* ── Resend OTP button ── */
+.resend-otp-btn {
+    background: transparent;
+    border: none;
+    color: #a5b4fc;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    margin-top: -0.25rem;
+    padding: 0.3rem;
+    transition: color 0.2s;
+}
+.resend-otp-btn:hover { color: #818cf8; }
+
+/* ── Animations ── */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+    .auth-card { padding: 2rem 1.5rem; }
+    .role-selector { grid-template-columns: 1fr; }
+}

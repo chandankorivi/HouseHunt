@@ -13,6 +13,12 @@ const ProprtySchema = new mongoose.Schema({
         required : true
     },
 
+    propertyType : {
+        type : String,
+        required : true,
+        enum: ["residential", "commercial", "plot/land"]
+    },
+
     listingType : {
         type : String,
         required : true,
@@ -20,15 +26,15 @@ const ProprtySchema = new mongoose.Schema({
     },
 
     price: {
-    type: Number,
-    required: true
-},
+        type: Number,
+        required: true
+    },
 
     status: {
-    type: String,
-    enum: ["available", "sold"],
-    default: "available"
-},
+        type: String,
+        enum: ["available", "sold", "rented"],
+        default: "available"
+    },
 
     description : {
         type : String ,
@@ -38,6 +44,11 @@ const ProprtySchema = new mongoose.Schema({
     images:{
         type:[String],
         required:true
+    },
+
+    ownerContact: {
+        type: String,
+        default: ""
     },
 
     owner:{
