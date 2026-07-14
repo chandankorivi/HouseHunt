@@ -8,7 +8,7 @@ function shortId(id) { return id ? id.toString().slice(-8) : "—"; }
 
 function badge(val, type) {
     const map = {
-        available: "rp-available", sold: "rp-sold",
+        available: "rp-available", sold: "rp-sold", rented: "rp-sold",
         rent: "rp-rent", sale: "rp-sale",
         residential: "rp-residential", commercial: "rp-commercial",
         "plot/land": "rp-plotland"
@@ -60,7 +60,7 @@ export default function MyProperties() {
 
             {/* Filter bar */}
             <div className="filter-bar">
-                {["all", "available", "sold"].map(f => (
+                {["all", "available", "sold", "rented"].map(f => (
                     <button
                         key={f}
                         className="filter-select"

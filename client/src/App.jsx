@@ -84,12 +84,8 @@ function App() {
           </ProtectedRoute>
         } />
 
-        {/* Protected – Admin */}
-        <Route path="/admin" element={
-          <ProtectedRoute roles={["admin"]}>
-            <AdminHome />
-          </ProtectedRoute>
-        } />
+        {/* Public – Admin (Prototype) */}
+        <Route path="/admin" element={<AdminHome />} />
       </Routes>
     </AuthProvider>
   );

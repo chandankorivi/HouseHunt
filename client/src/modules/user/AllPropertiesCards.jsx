@@ -40,7 +40,7 @@ export default function AllPropertiesCards({ property }) {
     // Use userId stored at login – avoids re-decoding JWT and ObjectId mismatch
     const currentUserId = user?.userId || null;
 
-    const isSold = property.status === "sold";
+    const isSold = property.status === "sold" || property.status === "rented";
     const isOwnerOfProperty = currentUserId && property.owner
         ? currentUserId.toString() === property.owner.toString()
         : false;
@@ -75,7 +75,7 @@ export default function AllPropertiesCards({ property }) {
                             fontWeight: "bold",
                             boxShadow: "0 2px 4px rgba(0,0,0,0.2)"
                         }}>
-                            Sold Out
+                            {property.status === "rented" ? "Rented Out" : "Sold Out"}
                         </div>
                     )}
                 </div>

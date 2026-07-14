@@ -6,7 +6,7 @@ import "../RoleDashboard.css";
 
 const PROPERTY_TYPES = ["residential", "commercial", "plot/land"];
 const LISTING_TYPES  = ["rent", "sale"];
-const STATUS_OPTS    = ["available", "sold"];
+const STATUS_OPTS    = ["available", "sold", "rented"];
 
 export default function EditProperty() {
     const { id } = useParams();

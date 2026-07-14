@@ -61,7 +61,11 @@ const updateBookingStatus = async (req, res) => {
     await booking.save();
 
     if (status === "approved") {
-        booking.property.status = "sold";
+        if (booking.property.listingType === "rent") {
+            booking.property.status = "rented";
+        } else {
+            booking.property.status = "sold";
+        }
         await booking.property.save();
     }
 

@@ -11,14 +11,14 @@ export default function Register() {
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
-        name: "", email: "", mobile: "", password: "", confirmPassword: "", role: "user", adminCode: ""
+        name: "", email: "", mobile: "", password: "", confirmPassword: "", role: "user"
     });
     const [errors, setErrors] = useState({});
     const [serverError, setServerError] = useState("");
     const [loading, setLoading] = useState(false);
     const [showPass, setShowPass] = useState(false);
     const [showConfirm, setShowConfirm] = useState(false);
-    const [showAdminCode, setShowAdminCode] = useState(false);
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -43,12 +43,7 @@ export default function Register() {
         else if (form.password.length < 6) errs.password = "Password must be at least 6 characters";
         if (form.password !== form.confirmPassword) errs.confirmPassword = "Passwords do not match";
 
-        if (form.role === "admin") {
-            const code = form.adminCode ? form.adminCode.trim() : "";
-            if (code !== "2113" && code !== "password-2113") {
-                errs.adminCode = "Failed: Invalid Admin Code";
-            }
-        }
+
 
         return errs;
     };
@@ -68,8 +63,7 @@ export default function Register() {
                 email: form.email.trim(),
                 mobile: form.mobile.trim(),
                 password: form.password,
-                role: form.role,
-                adminCode: form.adminCode ? form.adminCode.trim() : ""
+                role: form.role
             });
             showToast("Registration Successful! Please login. 🎉", "success");
             setTimeout(() => navigate("/login"), 1200);
@@ -229,28 +223,7 @@ export default function Register() {
                         {errors.role && <span className="field-error">{errors.role}</span>}
                     </div>
 
-                    {form.role === "admin" && (
-                        <div className={`form-group ${errors.adminCode ? "has-error" : ""}`}>
-                            <label>Admin Code</label>
-                            <div className="password-wrapper">
-                                <input
-                                    type={showAdminCode ? "text" : "password"}
-                                    name="adminCode"
-                                    placeholder="Enter secret code"
-                                    value={form.adminCode}
-                                    onChange={handleChange}
-                                />
-                                <button
-                                    type="button"
-                                    className="toggle-password"
-                                    onClick={() => setShowAdminCode(!showAdminCode)}
-                                >
-                                    {showAdminCode ? "🙈" : "👁️"}
-                                </button>
-                            </div>
-                            {errors.adminCode && <span className="field-error">{errors.adminCode}</span>}
-                        </div>
-                    )}
+
 
                     <button
                         id="register-submit"

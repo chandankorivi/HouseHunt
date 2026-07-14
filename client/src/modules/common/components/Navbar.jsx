@@ -42,6 +42,7 @@ export default function Navbar() {
                     <li><Link to="/all-properties" onClick={close}>Browse Properties</Link></li>
                     <li><Link to="/about" onClick={close}>About</Link></li>
                     <li><Link to="/contact" onClick={close}>Contact</Link></li>
+                    <li><Link to="/admin" onClick={close}>Admin Dashboard</Link></li>
 
                     {user ? (
                         <>
@@ -58,9 +59,7 @@ export default function Navbar() {
                                     <li><Link to="/renter" onClick={close}>Dashboard</Link></li>
                                 </>
                             )}
-                            {user.role === "admin" && (
-                                <li><Link to="/admin" onClick={close}>Dashboard</Link></li>
-                            )}
+
                             <li className="nav-user-name">👤 {user.name}</li>
                             <li>
                                 <button onClick={handleLogout} className="btn-nav-logout">Logout</button>
