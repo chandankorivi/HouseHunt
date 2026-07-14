@@ -14,6 +14,12 @@ const bookProperty = async (req, res) => {
         });
     }
 
+    if (property.status === "sold" || property.status === "rented") {
+        return res.status(400).json({
+            message: "Property is no longer available"
+        });
+    }
+
     const booking = await Booking.create({
         user: req.user._id,
         property: id
