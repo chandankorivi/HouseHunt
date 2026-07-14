@@ -63,8 +63,7 @@ export default function Register() {
                 email: form.email.trim(),
                 mobile: form.mobile.trim(),
                 password: form.password,
-                role: form.role,
-                adminCode: form.role === "admin" ? "2113" : ""
+                role: form.role
             });
             showToast("Registration Successful! Please login. 🎉", "success");
             setTimeout(() => navigate("/login"), 1200);
