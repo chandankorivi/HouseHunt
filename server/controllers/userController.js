@@ -8,6 +8,14 @@ const registerUser = async (req, res) => {
     try {
         const { name, email, mobile, password, role, adminCode } = req.body;
 
+        // Block admin registration if secret code is incorrect
+        if (role === "admin") {
+            const code = adminCode ? adminCode.trim() : "";
+            if (code !== "2113" && code !== "password-2113") {
+                return res.status(403).json({ message: "Failed: Invalid Admin Code." });
+            }
+        }
+
 
 
         // Validate required fields
