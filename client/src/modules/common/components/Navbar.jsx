@@ -42,7 +42,9 @@ export default function Navbar() {
                     <li><Link to="/all-properties" onClick={close}>Browse Properties</Link></li>
                     <li><Link to="/about" onClick={close}>About</Link></li>
                     <li><Link to="/contact" onClick={close}>Contact</Link></li>
-                    <li><Link to="/admin" onClick={close}>Admin Dashboard</Link></li>
+                    {user?.role === "admin" && (
+                        <li><Link to="/admin" onClick={close}>Admin Dashboard</Link></li>
+                    )}
 
                     {user ? (
                         <>
