@@ -1,6 +1,6 @@
 User Acceptance Testing (UAT) Template
 
-| Date |  |
+| Date | 10 July 2026 |
 |---|---|
 | Team ID |  |
 | Project Name | HouseHunt |
@@ -63,6 +63,11 @@ Bug tracking should include details such as severity, status, and steps to repro
 
 Obtain sign-off from both the project manager and product owner before proceeding with deployment.
 
-[Insert Link to Demo Video Here]
+[Demo Video Link (To Be Added by User)](#)
 
-[Insert Demo Screenshots Here]
+
+
+
+### Results: Output Screenshots
+![Dashboard Screenshot](../../assets/dashboard.jpg)
+

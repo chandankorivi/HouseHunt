@@ -2,7 +2,7 @@ Project Design Phase-II
 
 Technology Stack (Architecture & Stack)
 
-| Date | 31 January 3035 |
+| Date | 10 July 2026 |
 |---|---|
 | Team ID |  |
 | Project Name | HouseHunt |

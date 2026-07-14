@@ -2,7 +2,7 @@ Ideation Phase
 
 Empathize & Discover
 
-| Date | 31 January 2025 |
+| Date | 10 July 2026 |
 |---|---|
 | Team ID |  |
 | Project Name | HouseHunt |
@@ -33,4 +33,25 @@ Does: Spends hours browsing multiple different websites.
 
 Feels: Overwhelmed, frustrated, anxious.
 
-[Insert Empathy Map Canvas Diagram Here]
+
+
+
+### Empathy Map Canvas
+
+```mermaid
+quadrantChart
+    title Empathy Map Canvas - HouseHunt Seeker
+    x-axis "Negative" --> "Positive"
+    y-axis "Thinks/Feels" --> "Says/Does"
+    quadrant-1 "Says & Does (Positive)"
+    quadrant-2 "Says & Does (Negative)"
+    quadrant-3 "Thinks & Feels (Negative)"
+    quadrant-4 "Thinks & Feels (Positive)"
+    "Browses apps daily": [0.2, 0.7]
+    "Wants verified photos": [0.8, 0.8]
+    "Complains about fake listings": [-0.6, 0.6]
+    "Is this owner genuine?": [-0.7, -0.6]
+    "Stressed about budget": [-0.5, -0.8]
+    "Hopes to move in next month": [0.6, -0.5]
+```
+

@@ -2,7 +2,7 @@ Project Planning Phase
 
 Project Planning Template (Product Backlog, Sprint Planning, Stories, Story points)
 
-| Date | 15 February 2025 |
+| Date | 10 July 2026 |
 |---|---|
 | Team ID |  |
 | Project Name | HouseHunt |

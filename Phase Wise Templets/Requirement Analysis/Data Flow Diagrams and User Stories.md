@@ -2,7 +2,7 @@ Project Design Phase-II
 
 Data Flow Diagram & User Stories
 
-| Date | 31 January 2025 |
+| Date | 10 July 2026 |
 |---|---|
 | Team ID |  |
 | Project Name | HouseHunt |
@@ -35,4 +35,17 @@ Use the below template to list all the user stories for the product.
 |  |  |  |  |  |  |  |
 
 
-[Insert Data Flow Diagrams (DFD) Here]
+
+
+
+### Data Flow Diagram
+
+```mermaid
+flowchart LR
+    User([User/Seeker]) -- "Search Query" --> Sys(HouseHunt System)
+    Sys -- "Property Results" --> User
+    Owner([Property Owner]) -- "Property Details" --> Sys
+    Sys -- "Inquiries & Bookings" --> Owner
+    Sys -- "Read/Write" --> DB[(MongoDB Database)]
+```
+
