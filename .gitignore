@@ -1,0 +1,12 @@
+# Folders excluded from Git tracking
+assets/
+docs/
+
+# Python scripts (local utility scripts)
+*.py
+*.ps1
+
+# Temp/editor files
+*.suo
+*.sw?
+.DS_Store
